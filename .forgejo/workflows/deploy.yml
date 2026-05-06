@@ -17,7 +17,7 @@ jobs:
         with:
           lfs: true
       - name: Install, build, and upload your site
-        uses: withastro/action@v4
+        uses: https://github.com/withastro/action@main
         env:
           GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           SITE_BASE:

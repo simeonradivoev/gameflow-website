@@ -29,7 +29,7 @@ jobs:
         uses: https://github.com/withastro/action@main
         env:
           GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          SITE_BASE:
+          SITE_BASE: /
           SITE_URL: https://gameflow.simeonradivoev.com
         with:
           package-manager: "bun"

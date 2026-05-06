@@ -37,11 +37,11 @@
     "@types/bun": "latest"
   },
   "scripts": {
-    "dev": "astro dev",
-    "dev:host": "astro dev --host",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "bunx --bun astro dev",
+    "dev:host": "bunx --bun astro dev --host",
+    "build": "bunx --bun astro build",
+    "preview": "bunx --bun astro preview",
+    "astro": "bunx --bun astro"
   },
   "peerDependencies": {
     "typescript": "^5"

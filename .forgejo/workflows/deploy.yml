@@ -33,6 +33,7 @@ jobs:
           SITE_URL: https://gameflow.simeonradivoev.com
         with:
           package-manager: "bun"
+          cache: false
 
       - name: Deploy
         uses: https://github.com/up9cloud/action-rsync@master

@@ -1,11 +1,31 @@
 ---
 import "../assets/style.css";
 import favicon from "../assets/favicon.ico";
+import pkg from "../../package.json";
+import preview from "../assets/screenshots/3dscreenshot.webp";
+import { getImage } from "astro:assets";
+const previewHref = new URL(
+  (await getImage({ src: preview, format: "png" })).src,
+  Astro.url,
+).href;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Open Graph (Facebook, LinkedIn, Discord, Slack etc.) -->
+    <meta property="og:title" content={`${pkg.displayName} Deck`} />
+    <meta property="og:description" content={pkg.description} />
+    <meta property="og:image" content={previewHref} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${pkg.displayName} Deck`} />
+    <meta name="twitter:description" content={pkg.description} />
+    <meta name="twitter:image" content={previewHref} />
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href={favicon} />

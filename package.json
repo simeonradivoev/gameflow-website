@@ -1,6 +1,7 @@
 {
   "name": "gameflow-website",
   "displayName": "Gameflow",
+  "description": "A Cross-Platform open source Retro gaming frontend designed for handheld and controllers. Focused on building a simple user experience and intuitive UI as a curated community driven experience.",
   "module": "index.ts",
   "type": "module",
   "private": true,

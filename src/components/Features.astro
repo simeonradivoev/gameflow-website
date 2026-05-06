@@ -1,0 +1,79 @@
+---
+import {
+  PcCase,
+  Gamepad2,
+  Binoculars,
+  CloudSync,
+  PackageOpen,
+  SunMoon,
+  Store,
+  RefreshCcw,
+  Joystick,
+} from "@lucide/astro";
+import Feature from "./Feature.astro";
+---
+
+<div class="bg-base-300 grid sm:grid-cols-1 md:grid-cols-2 lg:md:grid-cols-3">
+  <Feature
+    title="Controller-First UI"
+    description="Switch-inspired navigation, fully operable with D-pad, joysticks, and
+          shoulder buttons. Designed from the ground up for handheld play."
+  >
+    <Gamepad2 size={64} slot="icon" />
+  </Feature>
+  <Feature
+    title="Play In-App"
+    description="EmulatorJS with RetroArch cores built right in. Launch and play
+          hundreds of platforms right in app."
+  >
+    <Joystick size={64} slot="icon" />
+  </Feature>
+  <Feature
+    title="Native Emulators"
+    description="Download, update and manage emulators within the app. Use the latest standalone emulators for maximum performance and compatibility"
+  >
+    <PackageOpen size={64} slot="icon" />
+  </Feature>
+  <Feature
+    title="Auto Downloads"
+    description="Connect to ROMM and let Gameflow Deck automatically download, sync,
+          and update your ROM library and platform metadata."
+  >
+    <RefreshCcw size={64} slot="icon" />
+  </Feature>
+  <Feature
+    title="Cloud Save Sync"
+    description="RClone integration lets you sync saves to any cloud provider or
+          between devices. Resume on your deck, continue on your PC."
+  >
+    <CloudSync size={64} slot="icon" />
+  </Feature>
+  <Feature
+    title="Curated Free Store"
+    description="Browse homebrew titles and download emulators from inside the app.
+          Community-driven, zero paywalls, no dark patterns."
+  >
+    <Store size={64} slot="icon" />
+  </Feature>
+  <Feature
+    title="ES-DE Discovery"
+    description="Auto-detect installed emulators from your existing ES-DE / EmuDeck
+          config. Bring your setup and Gameflow Deck adapts."
+  >
+    <Binoculars size={64} slot="icon" />
+  </Feature>
+  <Feature
+    title="Windows Games on Linux"
+    description="MU Launcher integration lets you run Windows store games on Linux
+          without Steam. Seamless Proton-powered compatibility."
+  >
+    <PcCase size={64} slot="icon" />
+  </Feature>
+  <Feature
+    title="Dark & Light Themes"
+    description="Full dark and light mode. Whether gaming at midnight or on a sunny
+          commute, it always looks sharp."
+  >
+    <SunMoon size={64} slot="icon" />
+  </Feature>
+</div>

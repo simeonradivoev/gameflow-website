@@ -1,0 +1,30 @@
+---
+import { PcCase } from "@lucide/astro";
+import { Linux, Steamdeck } from "simple-icons-astro";
+---
+
+<div
+  class="flex flex-wrap justify-center items-center min-h-24 gap-2 bg-base-200 px-8 py-8"
+>
+  <div class="font-semibold">Works On:</div>
+  <ul class="flex flex-wrap justify-center gap-2">
+    <li
+      class="flex gap-2 text-success font-semibold p-2 px-4 rounded-full border-dashed border-2"
+    >
+      <PcCase />
+      Windows
+    </li>
+    <li
+      class="flex gap-2 text-success font-semibold p-2 px-4 rounded-full border-dashed border-2"
+    >
+      <Linux />
+      Linux
+    </li>
+    <li
+      class="flex gap-2 text-accent font-semibold p-2 px-4 rounded-full border-dashed border-2"
+    >
+      <Steamdeck />
+      Steam Deck
+    </li>
+  </ul>
+</div>

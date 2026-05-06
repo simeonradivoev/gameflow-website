@@ -1,0 +1,57 @@
+{
+  "name": "gameflow-website",
+  "displayName": "Gameflow",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "license": "AGPL-3.0",
+  "sponsor": {
+    "url": "https://github.com/sponsors/simeonradivoev"
+  },
+  "socials": {
+    "github": "https://github.com/simeonradivoev/gameflow-deck",
+    "youtube": "https://www.youtube.com/@SimeonRadivoev",
+    "issues": "https://github.com/simeonradivoev/gameflow-deck/issues",
+    "store": "https://github.com/simeonradivoev/gameflow-store",
+    "license": "https://github.com/simeonradivoev/gameflow-deck/blob/master/LICENSE",
+    "packages": "https://www.npmjs.com/search?q=maintainer%3Asimeonradivoev%20keywords%3Agameflow",
+    "aboutus": "https://simeonradivoev.com",
+    "mirror": "https://git.simeonradivoev.com/simeonradivoev/gameflow-deck"
+  },
+  "downloads": "https://github.com/simeonradivoev/gameflow-deck/releases",
+  "keywords": [
+    "gameflow",
+    "retro",
+    "game",
+    "launcher",
+    "frontend",
+    "switch",
+    "free",
+    "open-source",
+    "cross-platform",
+    "gamepad",
+    "controller",
+    "ux"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@lucide/astro": "^1.14.0",
+    "@tailwindcss/vite": "^4.2.4",
+    "astro": "^6.2.2",
+    "daisyui": "^5.5.19",
+    "simple-icons-astro": "^16.1.0",
+    "tailwindcss": "^4.2.4",
+    "vite": "7"
+  }
+}

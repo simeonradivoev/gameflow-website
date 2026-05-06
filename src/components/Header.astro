@@ -1,0 +1,31 @@
+---
+import { Github } from "simple-icons-astro";
+import { HandCoins } from "@lucide/astro";
+import Icon from "../assets/icon.svg";
+import pkg from "../../package.json";
+import { releaseData } from "../scripts/getters";
+---
+
+<div class="sticky flex top-0 navbar z-100 bg-base-200 justify-between">
+  <div class="flex gap-2 items-center">
+    <img class="size-12" src={Icon.src} />
+    <div class="text-primary font-bold text-lg uppercase">
+      {pkg.displayName}
+    </div>
+    <div>Deck</div>
+    <div class="bg-base-300 p-1 px-3 rounded-full">{releaseData.tag_name}</div>
+  </div>
+  <div class="flex gap-2">
+    <a
+      class="flex gap-2 bg-base-300 cursor-pointer rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content"
+      href={pkg.sponsor.url}
+      ><HandCoins />
+    </a>
+    <a
+      title="Sponsor"
+      class="hidden sm:hidden md:flex gap-2 bg-base-300 cursor-pointer rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content"
+      href={pkg.socials.github}
+      ><Github />GitHub
+    </a>
+  </div>
+</div>

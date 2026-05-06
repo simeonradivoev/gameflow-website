@@ -1,0 +1,51 @@
+---
+import gameflowLogo from "../assets/icon.svg";
+import screenshot from "../assets/screenshots/3d screenshot.png";
+import { Dot, Download } from "@lucide/astro";
+import { Github } from "simple-icons-astro";
+import pkg from "../../package.json";
+---
+
+<div class="hero bg-base-100 py-16 md:p-0 md:min-h-[calc(100vh-19rem)]">
+  <div class="hero-content flex-col lg:flex-row gap-8 md:p-16 rounded-4xl">
+    <img src={screenshot.src} class="md:max-w-sm rounded-2xl shadow-2xl" />
+    <div>
+      <small
+        class="flex text-base-content/40 gap-2 justify-center md:justify-start items-center mb-2"
+      >
+        <Github size={16} /> Open Source <Dot />
+        {pkg.license}
+        <div class="badge badge-ghost">beta</div>
+      </small>
+      <h1
+        class="flex flex-wrap gap-4 text-5xl font-bold text-primary justify-center md:justify-start"
+      >
+        <div class="uppercase">{pkg.displayName}</div>
+        <span class="text-base-content">Deck</span>
+      </h1>
+      <p class="py-6">
+        A Cross-Platform open source Retro gaming frontend designed for handheld
+        and controllers. Focused on building a simple user experience and
+        intuitive UI as a curated community driven experience.
+      </p>
+      <div class="flex gap-2 justify-center md:justify-start">
+        <a
+          class="bg-primary rounded-full text-primary-content p-2 px-4 hover:bg-accent hover:text-accent-content cursor-pointer flex gap-2"
+          href={pkg.downloads}
+          target="_blank"
+        >
+          <Download />
+          Download
+        </a>
+        <a
+          class="bg-primary rounded-full text-primary-content p-2 px-4 hover:bg-accent hover:text-accent-content cursor-pointer flex gap-2"
+          href={pkg.socials.github}
+          target="_blank"
+        >
+          <Github />
+          View On Github
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

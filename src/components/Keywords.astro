@@ -1,0 +1,7 @@
+---
+import pkg from "../../package.json";
+---
+
+<ul class="flex gap-2 flex-wrap justify-center p-8">
+  {pkg.keywords.map((k) => <li class="badge badge-ghost">{k}</li>)}
+</ul>

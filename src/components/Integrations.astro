@@ -1,0 +1,39 @@
+---
+import { Puzzle } from "@lucide/astro";
+import { emulators } from "../scripts/getters";
+---
+
+<div class="divider sm:my-8 md:my-16"><Puzzle size={48} />Integrations</div>
+<div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 p-8">
+  <ul
+    class="grid sm:grid-cols-2 md:lg:grid-cols-3 lg:grid-cols-4 gap-2 sm:border-b-3 sm:border-b-base-content/10 sm:pb-8 md:border-r-3 md:border-r-base-content/10 md:pr-8 items-start"
+  >
+    <li class="bg-base-300 rounded-full p-2 flex items-center justify-center">
+      ROMM
+    </li>
+    <li class="bg-base-300 rounded-full p-2 flex items-center justify-center">
+      Emulator JS
+    </li>
+    <li class="bg-base-300 rounded-full p-2 flex items-center justify-center">
+      RClone
+    </li>
+    <li class="bg-base-300 rounded-full p-2 flex items-center justify-center">
+      UMU
+    </li>
+  </ul>
+
+  <ul class="grid sm:grid-cols-1 md:lg:grid-cols-2 lg:grid-cols-3 gap-2">
+    {
+      emulators.map((e) => (
+        <a
+          class="bg-base-300 rounded-full p-2 flex items-center justify-center gap-2 hover:bg-base-100"
+          href={e.homepage}
+          target="_blank"
+        >
+          <img class="size-8" src={e.logo} />
+          <div>{e.name}</div>
+        </a>
+      ))
+    }
+  </ul>
+</div>

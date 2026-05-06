@@ -1,0 +1,36 @@
+---
+import { Github, Youtube } from "simple-icons-astro";
+import { HandCoins } from "@lucide/astro";
+import pkg from "../../package.json";
+---
+
+<footer class="footer sm:footer-horizontal bg-base-300 text-base-content p-10">
+  <nav>
+    <h6 class="footer-title">Source</h6>
+    <a class="link link-hover" href={pkg.socials.issues}>Issues</a>
+    <a class="link link-hover" href={pkg.downloads}>Downloads</a>
+    <a class="link link-hover" href={pkg.socials.mirror}>Mirror</a>
+    <a class="link link-hover" href={pkg.socials.license}>License</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Others</h6>
+    <a class="link link-hover" href={pkg.socials.aboutus}>About us</a>
+    <a class="link link-hover" href={pkg.socials.packages}>Packages</a>
+    <a class="link link-hover" href={pkg.socials.store}>Store</a>
+    <a class="link link-hover" href={pkg.sponsor.url}>Sponsor</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Social</h6>
+    <div class="grid grid-flow-col gap-4">
+      <a title="Github" href={pkg.socials.github}>
+        <Github />
+      </a>
+      <a title="Youtube" href={pkg.socials.youtube}>
+        <Youtube />
+      </a>
+      <a title="Sponsor" href={pkg.sponsor.url}>
+        <HandCoins />
+      </a>
+    </div>
+  </nav>
+</footer>

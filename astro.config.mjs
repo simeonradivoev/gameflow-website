@@ -4,8 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://gameflow.github.io',
-    base: '/',
+    site: 'https://simeonradivoev.github.io',
+    base: '/gameflow',
     vite: {
         plugins: [
             tailwindcss()

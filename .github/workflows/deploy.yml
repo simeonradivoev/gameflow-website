@@ -24,6 +24,8 @@ jobs:
           lfs: true
       - name: Install, build, and upload your site
         uses: withastro/action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           package-manager: "bun"
 

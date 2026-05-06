@@ -1,21 +1,22 @@
 ---
-import { Image } from "@lucide/astro";
+import { ImageIcon } from "@lucide/astro";
+import { Image } from "astro:assets";
 const images = import.meta.glob("../assets/screenshots/*.webp", {
   eager: true,
 });
 ---
 
-<div class="divider sm:my-8 md:my-16"><Image size={48} />Screenshots</div>
+<div class="divider sm:my-8 md:my-16"><ImageIcon size={48} />Screenshots</div>
 <div
   class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 sm:p-8 md:p-16"
 >
   {
     Object.values(images).map((img: any, i) => (
       <a href={img.default.src} target="_blank">
-        <img
+        <Image
           class="mb-4 w-full rounded-xl"
           alt={`Screenshot ${i}`}
-          src={img.default.src}
+          src={img.default}
           loading="lazy"
         />
       </a>

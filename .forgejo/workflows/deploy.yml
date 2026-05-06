@@ -1,0 +1,38 @@
+name: Build Gameflow Site
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: docker
+    container:
+      image: ghcr.io/catthehacker/ubuntu:js-22.04
+
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Install, build, and upload your site
+        uses: withastro/action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          SITE_BASE:
+          SITE_URL: https://gameflow.simeonradivoev.com
+        with:
+          package-manager: "bun"
+
+      - name: Deploy
+        uses: https://github.com/up9cloud/action-rsync@master
+        env:
+          HOST: simeonradivoev.com
+          PORT: 8083
+          KEY: ${{secrets.DEPLOY_SSH_KEY}}
+          TARGET: /static_websites/gameflow
+          SOURCE: ./dist/
+          VERBOSE: true
+          RUN_SCRIPT_ON: source
+          USER: linuxserver.io

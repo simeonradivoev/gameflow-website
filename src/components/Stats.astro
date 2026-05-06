@@ -11,6 +11,7 @@ import {
   emulators,
   appContributorsData,
   storeContributorsData,
+  totalDownloads,
 } from "../scripts/getters";
 ---
 
@@ -29,7 +30,9 @@ import {
   <div class="flex gap-4">
     <Download class="text-primary" size={48} />
     <div class="flex flex-col">
-      <span id="downloads" class="text-2xl font-semibold">10+</span>
+      <span id="downloads" class="text-2xl font-semibold"
+        >{totalDownloads}+</span
+      >
       <div class="text-base-content/60">Downloads</div>
     </div>
   </div>
@@ -72,15 +75,3 @@ import {
     </div>
   </div>
 </div>
-
-<script lang="ts">
-  const dl = document.getElementById("downloads");
-
-  fetch(
-    "https://api.npmjs.org/downloads/point/last-year/@simeonradivoev/gameflow-store",
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      dl.textContent = `${data.downloads}+`;
-    });
-</script>

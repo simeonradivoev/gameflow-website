@@ -1,5 +1,5 @@
 ---
-import { Github } from "simple-icons-astro";
+import { Github, Discord } from "simple-icons-astro";
 import { HandCoins } from "@lucide/astro";
 import Icon from "../assets/icon.svg";
 import pkg from "../../package.json";
@@ -22,8 +22,13 @@ import { releaseData } from "../scripts/getters";
       ><HandCoins />
     </a>
     <a
+      class="hidden md:flex gap-2 bg-base-300 cursor-pointer rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content"
+      href={pkg.socials.discord}
+      ><Discord />
+    </a>
+    <a
       title="Sponsor"
-      class="hidden sm:hidden md:flex gap-2 bg-base-300 cursor-pointer rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content"
+      class="hidden md:flex gap-2 bg-base-300 cursor-pointer rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content"
       href={pkg.socials.github}
       ><Github />GitHub
     </a>

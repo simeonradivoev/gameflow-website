@@ -1,0 +1,24 @@
+---
+import { Discord } from "simple-icons-astro";
+import pkg from "../../package.json";
+---
+
+<div class="hero bg-base-300 min-h-[30vh]">
+  <div class="hero-content flex-col text-center">
+    <div class="text-accent/60 text-lg">Discord</div>
+    <div class="text-4xl font-semibold">Join Our Community</div>
+    <div class="text-2xl font-semibold">
+      Have a suggestion, feedback or just a question?
+    </div>
+    <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+      <a
+        class="bg-primary rounded-full text-primary-content p-2 px-4 hover:bg-accent hover:text-accent-content cursor-pointer flex gap-2"
+        href={pkg.socials.discord}
+        target="_blank"
+      >
+        <Discord />
+        Join Us
+      </a>
+    </div>
+  </div>
+</div>

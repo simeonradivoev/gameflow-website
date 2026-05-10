@@ -1,0 +1,93 @@
+---
+import { Dot, Download, Puzzle } from "@lucide/astro";
+import Header from "../components/Header.astro";
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import { createHash } from "crypto"; // Node.js built-in
+import { plugins } from "../scripts/getters";
+import { Git, Npm } from "simple-icons-astro";
+import Dock from "../components/Dock.astro";
+
+function getGravatarUrl(email: string, size = 80) {
+  const hash = createHash("sha256")
+    .update(email.trim().toLowerCase())
+    .digest("hex");
+  return `https://gravatar.com/avatar/${hash}?s=${size}`;
+}
+---
+
+<Layout title="Gameflow Deck - Plugins">
+  <Header />
+  <div class="divider">
+    <Puzzle size={48} />Plugins <span
+      class="bg-base-300 font-semibold px-2 rounded-2xl">{plugins.total}</span
+    >
+  </div>
+  <div class="p-8">
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {
+        plugins.objects.map((p) => {
+          const plugins = p;
+          const elements = [];
+          if (p.package.publisher) {
+            elements.push(
+              <div class="flex gap-2">
+                <img
+                  class="rounded-full size-6"
+                  src={getGravatarUrl(p.package.publisher?.email)}
+                />
+                {p.package.publisher?.username}
+              </div>,
+            );
+          }
+          elements.push(p.package.version);
+          if (p.package.license) elements.push(p.package.license);
+          if (p.package.links.repository) {
+            elements.push(
+              <a title="Go to repository" href={p.package.links.repository}>
+                <Git size={18} />
+              </a>,
+            );
+          }
+          if (p.package.links.npm) {
+            elements.push(
+              <a
+                title={`Show ${p.package.name} on NPM`}
+                href={p.package.links.npm}
+              >
+                <Npm size={16} />
+              </a>,
+            );
+          }
+          return (
+            <li class="flex flex-wrap justify-between p-4 gap-2 bg-base-300 rounded-2xl">
+              <div class="flex flex-col gap-2">
+                <div class="flex gap-2 items-center">
+                  <h1 class="font-bold text-2xl">{p.package.name}</h1>
+                </div>
+                <div class="text-base-content/60">{p.package.description}</div>
+                <ul class="flex flex-wrap gap-2">
+                  {p.package.keywords?.map((k: string) => (
+                    <li class="bg-base-100 px-2 rounded-full">{k}</li>
+                  ))}
+                </ul>
+                <div class="flex gap-1 items-center">
+                  {elements.flatMap((item, i) =>
+                    i === 0 ? [item] : [<Dot />, item],
+                  )}
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="bg-base-100 px-4 py-2 flex gap-2 rounded-3xl">
+                  <Download />
+                  {p.downloads.monthly}
+                </div>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+  <Dock />
+</Layout>

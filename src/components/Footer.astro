@@ -1,5 +1,5 @@
 ---
-import { Github, Youtube } from "simple-icons-astro";
+import { Discord, Github, Youtube } from "simple-icons-astro";
 import { HandCoins } from "@lucide/astro";
 import pkg from "../../package.json";
 ---
@@ -11,11 +11,17 @@ import pkg from "../../package.json";
     <a class="link link-hover" href={pkg.downloads}>Downloads</a>
     <a class="link link-hover" href={pkg.socials.mirror}>Mirror</a>
     <a class="link link-hover" href={pkg.socials.license}>License</a>
+    <a class="link link-hover" href={pkg.socials.packages}>Packages</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Navigation</h6>
+    <a class="link link-hover" href={`${import.meta.env.BASE_URL}plugins`}
+      >Plugins</a
+    >
   </nav>
   <nav>
     <h6 class="footer-title">Others</h6>
     <a class="link link-hover" href={pkg.socials.aboutus}>About us</a>
-    <a class="link link-hover" href={pkg.socials.packages}>Packages</a>
     <a class="link link-hover" href={pkg.socials.store}>Store</a>
     <a class="link link-hover" href={pkg.socials.discord}>Discord</a>
     <a class="link link-hover" href={pkg.sponsor.url}>Sponsor</a>
@@ -31,6 +37,9 @@ import pkg from "../../package.json";
       </a>
       <a title="Sponsor" href={pkg.sponsor.url}>
         <HandCoins />
+      </a>
+      <a title="Discord" href={pkg.socials.discord}>
+        <Discord />
       </a>
     </div>
   </nav>

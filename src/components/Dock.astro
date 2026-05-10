@@ -1,0 +1,35 @@
+---
+import { HandCoins, House, Puzzle } from "@lucide/astro";
+import { Github } from "simple-icons-astro";
+import pkg from "../../package.json";
+---
+
+<div class="md:hidden dock dock-sm" style="view-transition-name: footer;">
+  <a
+    data-active={Astro.url.pathname === `${import.meta.env.BASE_URL}/`}
+    class="data-[active=true]:dock-active"
+    href={import.meta.env.BASE_URL}
+  >
+    <House />
+    <span class="dock-label">Home</span>
+  </a>
+
+  <a
+    data-active={Astro.url.pathname.startsWith(
+      `${import.meta.env.BASE_URL}/plugins`,
+    )}
+    class="data-[active=true]:dock-active"
+    href={`${import.meta.env.BASE_URL}plugins`}
+  >
+    <Puzzle />
+    <span class="dock-label">Plugins</span>
+  </a>
+  <a href={pkg.socials.github}>
+    <Github />
+    <span class="dock-label">Github</span>
+  </a>
+  <a href={pkg.sponsor.url}>
+    <HandCoins />
+    <span class="dock-label">Sponsor</span>
+  </a>
+</div>

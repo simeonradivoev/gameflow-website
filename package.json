@@ -33,7 +33,20 @@
     "cross-platform",
     "gamepad",
     "controller",
-    "ux"
+    "ux",
+    "plugins",
+    "community",
+    "cloud",
+    "emulators",
+    "steam-deck",
+    "linux",
+    "windows",
+    "app",
+    "webview",
+    "bun",
+    "es-de",
+    "store",
+    "free"
   ],
   "devDependencies": {
     "@types/bun": "latest"

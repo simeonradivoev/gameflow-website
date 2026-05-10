@@ -5,6 +5,7 @@ import {
   Star,
   GitCommitVertical,
   UserPen,
+  Puzzle,
 } from "@lucide/astro";
 import {
   repoData,
@@ -12,6 +13,7 @@ import {
   appContributorsData,
   storeContributorsData,
   totalDownloads,
+  plugins,
 } from "../scripts/getters";
 ---
 
@@ -21,34 +23,28 @@ import {
   <div class="flex gap-4">
     <Star class="text-primary" size={48} />
     <div class="flex flex-col">
-      <span id="stars" class="text-2xl font-semibold"
-        >{repoData.stargazers_count}+</span
-      >
+      <span class="text-2xl font-semibold">{repoData.stargazers_count}+</span>
       <div class="text-base-content/60">GitHub Stars</div>
     </div>
   </div>
   <div class="flex gap-4">
     <Download class="text-primary" size={48} />
     <div class="flex flex-col">
-      <span id="downloads" class="text-2xl font-semibold"
-        >{totalDownloads}+</span
-      >
+      <span class="text-2xl font-semibold">{totalDownloads}+</span>
       <div class="text-base-content/60">Downloads</div>
     </div>
   </div>
   <div class="flex gap-4">
     <Joystick class="text-primary" size={48} />
     <div class="flex flex-col">
-      <span id="downloads" class="text-2xl font-semibold"
-        >{emulators.length}</span
-      >
+      <span class="text-2xl font-semibold">{emulators.length}</span>
       <div class="text-base-content/60">Built In Emulators</div>
     </div>
   </div>
   <div class="flex gap-4">
     <GitCommitVertical class="text-primary" size={48} />
     <div class="flex flex-col">
-      <span id="downloads" class="text-2xl font-semibold"
+      <span class="text-2xl font-semibold"
         >{
           appContributorsData.reduce(
             (sum: number, user: any) => sum + user.contributions,
@@ -62,7 +58,7 @@ import {
   <div class="flex gap-4">
     <UserPen class="text-primary" size={48} />
     <div class="flex flex-col">
-      <span id="downloads" class="text-2xl font-semibold"
+      <span class="text-2xl font-semibold"
         >{
           new Set(
             appContributorsData
@@ -72,6 +68,13 @@ import {
         }</span
       >
       <div class="text-base-content/60">Contributors</div>
+    </div>
+  </div>
+  <div class="flex gap-4">
+    <Puzzle class="text-primary" size={48} />
+    <div class="flex flex-col">
+      <span class="text-2xl font-semibold">{plugins.total}</span>
+      <div class="text-base-content/60">Plugins</div>
     </div>
   </div>
 </div>

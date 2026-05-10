@@ -3,11 +3,13 @@ import "../assets/style.css";
 import favicon from "../assets/favicon.ico";
 import pkg from "../../package.json";
 import preview from "../assets/screenshots/3dscreenshot.webp";
+import { ClientRouter } from "astro:transitions";
 import { getImage } from "astro:assets";
 const previewHref = new URL(
   (await getImage({ src: preview, format: "png" })).src,
   Astro.url,
 ).href;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,6 +17,7 @@ const previewHref = new URL(
   <head>
     <!-- Open Graph (Facebook, LinkedIn, Discord, Slack etc.) -->
     <meta property="og:title" content={`${pkg.displayName} Deck`} />
+    <link rel="canonical" href={Astro.url.href} />
     <meta property="og:description" content={pkg.description} />
     <meta property="og:image" content={previewHref} />
     <meta property="og:url" content={Astro.url} />
@@ -34,7 +37,8 @@ const previewHref = new URL(
       href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap"
       rel="stylesheet"
     />
-    <title>Gameflow Deck</title>
+    <title>{title}</title>
+    <ClientRouter />
   </head>
   <body>
     <slot />

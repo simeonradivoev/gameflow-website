@@ -1,20 +1,22 @@
 const githubHeaders = import.meta.env.GITHUB_TOKEN
   ? {
-      headers: {
-        Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
-      },
-    }
+    headers: {
+      Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
+    },
+  }
   : {};
 
 export const repoData = await fetch(
   "https://api.github.com/repos/simeonradivoev/gameflow-deck",
   githubHeaders,
 )
-  .then((res) => {
+  .then((res) =>
+  {
     if (!res.ok) throw new Error(res.statusText);
     return res.json();
   })
-  .catch((e) => {
+  .catch((e) =>
+  {
     console.error(e);
     return { stargazers_count: 0 };
   });
@@ -23,21 +25,25 @@ export const releaseData = await fetch(
   "https://api.github.com/repos/simeonradivoev/gameflow-deck/releases/latest",
   githubHeaders,
 )
-  .then((res) => {
+  .then((res) =>
+  {
     if (!res.ok) throw new Error(res.statusText);
     return res.json();
   })
-  .catch((e) => {
+  .catch((e) =>
+  {
     console.error(e);
     return { tag_name: "unknown" };
   });
 
-async function getTotalDownloads(owner: string, repo: string): Promise<number> {
+async function getTotalDownloads (owner: string, repo: string): Promise<number>
+{
   let totalDownloads = 0;
   let cursor: string | null = null;
   let hasNextPage = true;
 
-  while (hasNextPage) {
+  while (hasNextPage)
+  {
     const res = await fetch("https://api.github.com/graphql", {
       method: "POST",
       headers: {
@@ -65,13 +71,15 @@ async function getTotalDownloads(owner: string, repo: string): Promise<number> {
       }),
     });
 
-    if (!res.ok) {
+    if (!res.ok)
+    {
       throw new Error(`GitHub API error: ${res.status} ${res.statusText}`);
     }
 
     const json: any = await res.json();
 
-    if (json.errors) {
+    if (json.errors)
+    {
       throw new Error(
         `GraphQL error: ${json.errors.map((e: any) => e.message).join(", ")}`,
       );
@@ -79,14 +87,17 @@ async function getTotalDownloads(owner: string, repo: string): Promise<number> {
 
     const releases = json.data?.repository?.releases;
 
-    if (!releases) {
+    if (!releases)
+    {
       throw new Error(
         `Repository ${owner}/${repo} not found or not accessible`,
       );
     }
 
-    for (const release of releases.nodes) {
-      for (const asset of release.releaseAssets.nodes) {
+    for (const release of releases.nodes)
+    {
+      for (const asset of release.releaseAssets.nodes)
+      {
         totalDownloads += asset.downloadCount;
       }
     }
@@ -101,7 +112,8 @@ async function getTotalDownloads(owner: string, repo: string): Promise<number> {
 export const totalDownloads = await getTotalDownloads(
   "simeonradivoev",
   "gameflow-deck",
-).catch((e) => {
+).catch((e) =>
+{
   console.error(e);
   return 0;
 });
@@ -110,11 +122,13 @@ export const appContributorsData = await fetch(
   "https://api.github.com/repos/simeonradivoev/gameflow-deck/contributors",
   githubHeaders,
 )
-  .then((res) => {
+  .then((res) =>
+  {
     if (!res.ok) throw new Error(res.statusText);
     return res.json();
   })
-  .catch((e) => {
+  .catch((e) =>
+  {
     console.error(e);
     return [];
   });
@@ -123,11 +137,13 @@ export const storeContributorsData = await fetch(
   "https://api.github.com/repos/simeonradivoev/gameflow-store/contributors",
   githubHeaders,
 )
-  .then((res) => {
+  .then((res) =>
+  {
     if (!res.ok) throw new Error(res.statusText);
     return res.json();
   })
-  .catch((e) => {
+  .catch((e) =>
+  {
     console.error(e);
     return [];
   });
@@ -137,7 +153,16 @@ export const emulators = await fetch(
 )
   .then((res) => res.json())
   .then((d) => d.emulators as any[])
-  .catch((e) => {
+  .catch((e) =>
+  {
+    console.error(e);
+    return [] as any[];
+  });
+
+export const plugins = await fetch('https://registry.npmjs.com/-/v1/search?text=keywords:gameflow-plugin')
+  .then(res => res.json())
+  .catch(e =>
+  {
     console.error(e);
     return [] as any[];
   });

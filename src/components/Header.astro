@@ -1,33 +1,52 @@
 ---
 import { Github, Discord } from "simple-icons-astro";
-import { HandCoins } from "@lucide/astro";
+import { HandCoins, Puzzle } from "@lucide/astro";
 import Icon from "../assets/icon.svg";
 import pkg from "../../package.json";
-import { releaseData } from "../scripts/getters";
+import { plugins, releaseData } from "../scripts/getters";
+import Image from "astro/components/Image.astro";
 ---
 
-<div class="sticky flex top-0 navbar z-100 bg-base-200 justify-between">
-  <div class="flex gap-2 items-center">
-    <img class="size-12" src={Icon.src} />
+<div
+  class="sticky flex flex-wrap gap-2 top-0 navbar z-100 bg-base-200 justify-between"
+  style="view-transition-name: header;"
+>
+  <a class="flex gap-2 items-center" href={import.meta.env.BASE_URL}>
+    <Image src={Icon} class="size-12" alt="Gameflow Hero Screenshot" />
     <div class="text-primary font-bold text-lg uppercase">
       {pkg.displayName}
     </div>
     <div>Deck</div>
     <div class="bg-base-300 p-1 px-3 rounded-full">{releaseData.tag_name}</div>
-  </div>
-  <div class="flex gap-2">
+  </a>
+  <div class="hidden md:flex gap-2">
     <a
+      title="View a list of plugins you can download for gameflow"
+      data-active={Astro.url.pathname.startsWith(
+        `${import.meta.env.BASE_URL}/plugins`,
+      )}
+      class="flex group gap-2 bg-base-300 data-[active=true]:cursor-default rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content data-[active=true]:bg-accent data-[active=true]:text-accent-content items-center"
+      href={`${import.meta.env.BASE_URL}plugins`}
+      ><Puzzle />Plugins<span
+        class="bg-base-100 px-2 text-sm font-semibold rounded-full group-hover:bg-accent-content group-hover:text-accent in-data-[active=true]:bg-accent-content in-data-[active=true]:text-accent-content"
+        >{plugins.total}</span
+      >
+    </a>
+    <div class="divider divider-horizontal"></div>
+    <a
+      title="Support Gameflow development"
       class="flex gap-2 bg-base-300 cursor-pointer rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content"
       href={pkg.sponsor.url}
       ><HandCoins />
     </a>
     <a
-      class="hidden md:flex gap-2 bg-base-300 cursor-pointer rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content"
+      class="flex gap-2 bg-base-300 cursor-pointer rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content"
       href={pkg.socials.discord}
+      title="Join our Community on Discord"
       ><Discord />
     </a>
     <a
-      title="Sponsor"
+      title="View source code on GitHub"
       class="hidden md:flex gap-2 bg-base-300 cursor-pointer rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content"
       href={pkg.socials.github}
       ><Github />GitHub

@@ -109,6 +109,15 @@ async function getTotalDownloads (owner: string, repo: string): Promise<number>
   return totalDownloads;
 }
 
+export const games = await fetch('https://cdn.jsdelivr.net/npm/@simeonradivoev/gameflow-store@latest/manifests/games.json')
+  .then(res => res.json())
+  .then(v => v.emulators)
+  .catch((e) =>
+  {
+    console.error(e);
+    return [] as any[];
+  });
+
 export const totalDownloads = await getTotalDownloads(
   "simeonradivoev",
   "gameflow-deck",

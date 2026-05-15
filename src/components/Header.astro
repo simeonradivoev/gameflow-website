@@ -1,9 +1,9 @@
 ---
 import { Github, Discord } from "simple-icons-astro";
-import { HandCoins, Puzzle } from "@lucide/astro";
+import { Gamepad2, HandCoins, Puzzle } from "@lucide/astro";
 import Icon from "../assets/icon.svg";
 import pkg from "../../package.json";
-import { plugins, releaseData } from "../scripts/getters";
+import { games, plugins, releaseData } from "../scripts/getters";
 import Image from "astro/components/Image.astro";
 ---
 
@@ -26,10 +26,22 @@ import Image from "astro/components/Image.astro";
         `${import.meta.env.BASE_URL}/plugins`,
       )}
       class="flex group gap-2 bg-base-300 data-[active=true]:cursor-default rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content data-[active=true]:bg-accent data-[active=true]:text-accent-content items-center"
-      href={`${import.meta.env.BASE_URL}plugins`}
+      href={`${import.meta.env.BASE_URL}/plugins`}
       ><Puzzle />Plugins<span
-        class="bg-base-100 px-2 text-sm font-semibold rounded-full group-hover:bg-accent-content group-hover:text-accent in-data-[active=true]:bg-accent-content in-data-[active=true]:text-accent-content"
+        class="bg-base-100 px-2 text-sm font-semibold rounded-full group-hover:bg-accent-content group-hover:text-accent in-data-[active=true]:bg-accent-content in-data-[active=true]:text-accent"
         >{plugins.total}</span
+      >
+    </a>
+    <a
+      title="View a list of free games you can download for gameflow"
+      data-active={Astro.url.pathname.startsWith(
+        `${import.meta.env.BASE_URL}/games`,
+      )}
+      class="flex group gap-2 bg-base-300 data-[active=true]:cursor-default rounded-full p-1 px-3 text-xl hover:bg-accent hover:text-accent-content data-[active=true]:bg-accent data-[active=true]:text-accent-content items-center"
+      href={`${import.meta.env.BASE_URL}/games`}
+      ><Gamepad2 />Games<span
+        class="bg-base-100 px-2 text-sm font-semibold rounded-full group-hover:bg-accent-content group-hover:text-accent in-data-[active=true]:bg-accent-content in-data-[active=true]:text-accent"
+        >{games.length}</span
       >
     </a>
     <div class="divider divider-horizontal"></div>

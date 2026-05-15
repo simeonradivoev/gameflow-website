@@ -10,6 +10,8 @@ import {
   RefreshCcw,
   Joystick,
   Puzzle,
+  Grid2x2,
+  LayoutGrid,
 } from "@lucide/astro";
 import Feature from "./Feature.astro";
 ---
@@ -79,8 +81,14 @@ import Feature from "./Feature.astro";
   </Feature>
   <Feature
     title="Plugins System"
-    description="Extent functionality with plugins. Hosted on the NPM registry."
+    description="Extent functionality with plugins. Hosted on the NPM registry. From download sources to more emulator integrations. Everyone can easily create plugins and publish them on NPM"
   >
     <Puzzle size={64} slot="icon" />
+  </Feature>
+  <Feature
+    title="All Your Games"
+    description="Download thousands of games and roms from the internet archive by installing the internet archive plugin."
+  >
+    <LayoutGrid size={64} slot="icon" />
   </Feature>
 </div>

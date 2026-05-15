@@ -46,7 +46,9 @@
     "bun",
     "es-de",
     "store",
-    "free"
+    "free",
+    "internet-archive",
+    "retro-achievements"
   ],
   "devDependencies": {
     "@types/bun": "latest"
